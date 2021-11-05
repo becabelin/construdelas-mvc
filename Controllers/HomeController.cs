@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using mvc.Models;
 using MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,32 @@ namespace MVC.Controllers
 
         public IActionResult Index()
         {
+            return View();
+        }
+
+        public IActionResult Cadastro(string nome, string telefone, string endereco)
+        {
+
+            var clientes = ClienteDto.Todos();
+
+            if(!string.IsNullOrEmpty(nome))
+            {
+                var cliente = new Cliente(){
+                    Codigo = (clientes.Count + 1),
+                    Nome = nome,
+                    Telefone = telefone,
+                    Endereco = endereco
+                };
+                var listaCli = new List<Cliente>();
+                listaCli.Add(cliente);
+
+                ClienteDto.Salvar(listaCli);
+
+                Console.WriteLine("Cadastro realizado");
+            }
+
+            ViewBag.clientes = ClienteDto.Todos();
+
             return View();
         }
 
