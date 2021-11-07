@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using mvc.Models;
+using MVC.Models;
 using mvc.Servicos;
 using Npgsql;
 

@@ -1,12 +1,12 @@
 @{
-    ViewData["Title"] = "Cadastro de clientes";
+    ViewData["Title"] = "Clientes";
 }
 
 <h1>@ViewData["Title"]</h1>
 
 <p>Vamos fazer aqui o cadastro do cliente!</p>
 
-<form action="/home/cadastro" method="post">
+<form action="/home/clientes" method="post">
   <div class="form-group">
     <label for="nome">Nome</label>
     <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o seu nome">
@@ -22,7 +22,7 @@
   <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 
-<br>
+<br><br>
 <h1>Lista de clientes</h1>
 <hr>
 

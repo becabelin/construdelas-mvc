@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Ingredientes";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Vamos fazer aqui o cadastro do ingrediente!</p>
+
+<form action="/home/ingredientes" method="post">
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o nome do ingrediente">
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+<br><br>
+<h1>Lista de ingredientes</h1>
+<hr>
+
+<p>Todos os ingredientes já cadastrados</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Nome</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var ingrediente in ViewBag.ingredientes)
+    {
+        <tr>
+            <th scope="row">@ingrediente.Codigo</th>
+            <td>@ingrediente.Nome</td>
+        </tr>
+    }
+  </tbody>
+</table>

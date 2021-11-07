@@ -1,0 +1,57 @@
+@{
+    ViewData["Title"] = "Hamburgeres";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Vamos fazer aqui o cadastro do hamburger!</p>
+
+<form action="/home/hamburgeres" method="post">
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o nome do hamburger">
+  </div>
+  <div class="form-check">
+  <label for="ingredientes">Ingredientes</label>
+  <p> Selecione um ou mais ingredientes:</p>
+  <input class="form-check-input" type="checkbox" value="" id="ingredientes" name="ingredientes">
+    @foreach (var item in ViewBag.ingredientes)
+      {
+        <input class="form-check-input" type="checkbox" value="" id="ingredientes" name="ingredientes">
+        <option value="@item.Codigo">@item.Nome</option>
+      }
+  </label>
+  <div class="form-group">
+    <label for="valor">Valor</label>
+    <input type="text" class="form-control" name="valor" id="valor" placeholder="Digite o valor do hamburger">
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+<br><br>
+<h1>Lista de hamburgeres</h1>
+<hr>
+
+<p>Todos os hamburgeres já cadastrados</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Ingredientes</th>
+      <th scope="col">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var hamburger in ViewBag.hamburgeres)
+    {
+        <tr>
+            <th scope="row">@hamburger.Codigo</th>
+            <td>@hamburger.Nome</td>
+            <td>@hamburger.Ingredientes</td>
+            <td>@hamburger.Valor</td>
+        </tr>
+    }
+  </tbody>
+</table>

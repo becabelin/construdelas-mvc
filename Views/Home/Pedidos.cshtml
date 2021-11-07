@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Pedidos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Vamos fazer aqui o cadastro do pedido!</p>
+
+<form>
+<div class="form-group">
+    <label for="cliente">Escolha o cliente</label>
+    <select class="form-control" id="cliente" name="cliente">
+      @foreach (var cliente in ViewBag.clientes)
+      {
+        <option value="@cliente.Nome">@cliente.Nome</option>
+      }
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="hamburger">Escolha os hamburgeres</label>
+    <select multiple class="form-control" id="hamburger" name="hamburger">
+      @foreach (var hamburger in ViewBag.hamburgeres)
+      {
+        <option value="@hamburger.Nome">@hamburger.Nome</option>
+      }
+    </select>
+  </div>
+<div class="form-group">
+    <label for="valorTotal">Digite o valor total deste pedido</label>
+    <input type="double" class="form-control" id="valorTotal" placeholder="Valor total">
+</div>
+<button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+<br><br>
+<h1>Lista de pedidos</h1>
+<hr>
+
+<p>Todos os pedidos já cadastrados</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Nome do cliente</th>
+      <th scope="col">Telefone do cliente</th>
+      <th scope="col">Endereço do cliente</th>
+      <th scope="col">Hamburgeres escolhidos</th>
+      <th scope="col">Valor total do pedido</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var pedido in ViewBag.pedidos)
+    {
+        <tr>
+            <th scope="row">@pedido.Codigo</th>
+            <td>@pedido.cliente.Nome</td>
+            <td>@pedido.cliente.Telefone</td>
+            <td>@pedido.cliente.Endereco</td>
+            <td>@pedido.hamburger.Nome</td>
+            <td>@pedido.valorTotal</td>
+        </tr>
+    }
+  </tbody>
+</table>
